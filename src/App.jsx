@@ -3,8 +3,11 @@ import axios from 'axios'
 import './App.css'
 
 function App() {
+
+
   const [attrici, setAttrici] = useState([]); //lo state è vuoto perchè la richiesta get non è ancora partita
   const [attori, setAttori] = useState([]);
+
 
   useEffect(() => {
     axios.get('https://lanciweb.github.io/demo/api/actresses/').then(res => {
@@ -21,6 +24,8 @@ function App() {
   }, []);
 
 
+
+
   return (
     <>
       <div className="container">
@@ -32,12 +37,14 @@ function App() {
                 return (
                   <li key={attrice.id}>
                     <div className="card" style={{ width: "18rem" }}>
-                      <img src="..." class="card-img-top" alt="..."></img>
+                      <img src={attrice.image} className="card-img-top" alt="..."></img>
                       <div className="card-body">
                         <h5 className="card-title">{attrice.name}</h5>
                         <h6 className="card-subtitle mb-2 text-body-secondary">{attrice.birth_year}</h6>
-                        <p>Nazionalità: {attrice.nationality}</p>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                        <p className="card-text">Nazionalità: {attrice.nationality}</p>
+                        <p className="card-text">Biography: {attrice.biography}</p>
+                        <p className="card-text">Awards: {attrice.awards}</p>
+
                         <a href="#" className="card-link">Card link</a>
                         <a href="#" className="card-link">Another link</a>
                       </div>
