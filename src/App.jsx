@@ -3,11 +3,17 @@ import axios from 'axios'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [attrici, setAttrici] = useState([])
 
   return (
     <>
-
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
