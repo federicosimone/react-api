@@ -1,0 +1,8 @@
+.cardImage {
+    max-height: 18rem;
+    min-height: 18rem;
+}
+
+.card-bg {
+    background-color: rgb(187, 184, 184);
+}
