@@ -1,9 +1,18 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import './App.css'
 
 function App() {
-  const [attrici, setAttrici] = useState([])
+  const [attrici, setAttrici] = useState([]); //lo state è vuoto perchè la richiesta get non è ancora partita
+
+  useEffect(() => {
+    axios.get(' https://lanciweb.github.io/demo/api/actresses/').then(res => {
+      setAttrici(res.data)
+      console.log(res.data)
+    })
+
+  }, [])
+
 
   return (
     <>
