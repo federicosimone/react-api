@@ -9,21 +9,36 @@ function App() {
   const [attori, setAttori] = useState([]);
   const [search, setSearch] = useState("")
 
+  function mounted() {
 
-  useEffect(() => {
-    axios.get('https://lanciweb.github.io/demo/api/actresses/').then(res => {
+
+    const urlAttrici = 'https://lanciweb.github.io/demo/api/actresses/';
+    const urlAttori = 'https://lanciweb.github.io/demo/api/actors/';
+
+    axios.get(urlAttrici).then(res => {
       setAttrici(res.data)
-      console.log(res.data)
-    })
-  }, []) //adesso la costante "attrici" è stata aggiornata, andando a prendere i dati tramite axios.
 
-  useEffect(() => {
-    axios.get('https://lanciweb.github.io/demo/api/actors/').then(res => {
+      console.log(res.data)
+
+    }).catch(error => {
+
+      console.log(error.message)
+    });
+
+    axios.get(urlAttori).then(res => {
+
       setAttori(res.data)
-      console.log(res.data)
-    })
-  }, []);
 
+      console.log(res.data)
+
+    }).catch(error => {
+
+      console.log(error.message)
+
+    });
+
+  }
+  useEffect(mounted, [])
 
 
   return (
@@ -69,7 +84,7 @@ function App() {
                         <h6 className="card-subtitle mb-2 text-body-secondary">{attore.birth_year}</h6>
                         <p className="card-text"><strong>Nazionalità:</strong> {attore.nationality}</p>
                         <p className="card-text"><strong>Biography:</strong> {attore.biography}</p>
-                        <p className="card-text"><strong>Awards:</strong> {attore.awards}</p>
+                        <p className="card-text"><strong>Awards:</strong> {attore.awards.map(award => { award })}</p>
                         <div className="card-text"><strong>Film più famosi:</strong> <ul className="list-unstyled"> {attore.known_for.map(movie => <li>{movie}</li>)} </ul></div>
                       </div>
                     </div>
